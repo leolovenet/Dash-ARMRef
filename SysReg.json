@@ -1,0 +1,15 @@
+{
+    "name": "ARM System Register",
+    "package": "armsr",
+    "index": "func_index.html",
+    "selectors": {
+        "h1.alphindextitle": "Package",
+        "h1.sysregindex": "Package",
+        "h1.register-section" : "Command",
+        "h2:not([class])" : "Section",
+        "h2.sysregindex" : "Tag"
+    },
+    "icon32x32": "../icon@2x.png",
+    "allowJS": false,
+    "ExternalURL": ""
+}
