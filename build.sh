@@ -7,6 +7,8 @@ then
 fi
 
 jsons=(SysReg.json A64_ISA.json AArch32_ISA.json)
+pwd=$(pwd)
+
 rm -rf docs
 mkdir -p docs
 for j in "${jsons[@]}"; do
@@ -16,7 +18,7 @@ for j in "${jsons[@]}"; do
         continue
     fi
 
-    t=$(ls src | grep ${j%%.json} | sort -r | head -1)
+    t=$(ls src/*.tar.gz | grep ${j%%.json} | sort -r | head -1)
     if [ -z "$t" ]
     then
         echo "then source file(src/${j%%.json}*) for 'dashing build' command is missing, skip!!"
@@ -26,16 +28,19 @@ for j in "${jsons[@]}"; do
     rm -rf build
     mkdir -p build
     cd build || { echo "mkdir error!!!"; exit 2; }
-    tar -zxf ../src/$t
+
+    tar -zxf ../$t
     s=$(find . -type d -iname xhtml | sort -r | head -1)
     if [ -z "$s" ]
     then
         echo "can't find directory 'xhtml'!!!"
         exit 3
     fi
-    echo $j $s
-    dashing build --config "../$j" --source "$s"
-    mv *.docset ../docs/
+
+    cp "../icon@2x.png" "$s/"
+    cp "../$j" "$s/dashing.json"
+    (cd $s && dashing build && mv *.docset $pwd/docs)
+
     cd ..
     rm -rf build
 done

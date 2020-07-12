@@ -15,7 +15,7 @@
             "replacement" : ""
         }
     },
-    "icon32x32": "../icon@2x.png",
+    "icon32x32": "icon@2x.png",
     "allowJS": false,
     "ExternalURL": ""
 }
