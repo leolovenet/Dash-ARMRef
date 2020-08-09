@@ -5,7 +5,11 @@
     "selectors": {
         "h1.alphindextitle": "Package",
         "h1.sysregindex": "Package",
-        "h1.register-section" : "Command",
+        "h1.register-section" : {
+            "type" : "Command",
+            "regexp" : "[\r\n\t ]+",
+            "replacement" : " "
+        },
         "h2:not([class])" : "Section",
         "h2.sysregindex" : "Tag"
     },
