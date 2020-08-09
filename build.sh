@@ -12,7 +12,7 @@ pwd=$(pwd)
 rm -rf docs
 mkdir -p docs
 for j in "${jsons[@]}"; do
-    if [ ! -f $j ]
+    if [ ! -f "$j" ]
     then
         echo "the JSON configuration file($j) of 'dashing build' command is missing, skip!"
         continue
@@ -29,7 +29,7 @@ for j in "${jsons[@]}"; do
     mkdir -p build
     cd build || { echo "mkdir error!!!"; exit 2; }
 
-    tar -zxf ../$t
+    tar -zxf "../$t"
     s=$(find . -type d -iname xhtml | sort -r | head -1)
     if [ -z "$s" ]
     then
@@ -39,8 +39,15 @@ for j in "${jsons[@]}"; do
 
     cp "../icon@2x.png" "$s/"
     cp "../$j" "$s/dashing.json"
-    (cd $s && dashing build && mv *.docset $pwd/docs)
+    (cd "$s" && dashing build && mv *.docset "$pwd/docs")
 
     cd ..
     rm -rf build
+done
+
+cd "$pwd/docs" || { echo "cd '$pwd/docs' error!"; exit 2; }
+pwd
+for d in *.docset; do
+    [[ -e "$d" ]] || break
+    tar --exclude='.DS_Store' -cvzf "${d%%.docset}.tgz" "$d"
 done
