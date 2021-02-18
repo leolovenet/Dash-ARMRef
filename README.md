@@ -3,8 +3,8 @@ ARM Assembly Reference Manual for https://kapeli.com/dash
 
 ARM Versions
 ----------
-- v8.6a
-- v8.6a (32-bit)
+- v8.7
+- v8.7 (32-bit)
 - Grab more from (https://developer.arm.com/architectures/cpu-architecture/a-profile/exploration-tools)
 
 ## How to
