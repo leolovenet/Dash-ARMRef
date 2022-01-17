@@ -6,6 +6,7 @@ ARM Versions
 - v8.8
 - v8.8 (32-bit)
 - v9.3
+- Morello
 - Grab more from (https://developer.arm.com/architectures/cpu-architecture/a-profile/exploration-tools)
 
 ## How to
