@@ -6,7 +6,7 @@ then
     exit 1
 fi
 
-jsons=(SysReg_xml_v8.json SysReg_xml_v9.json SysReg_xml_Morello.json ISA_A64_xml_v8.json ISA_A64_xml_v9.json A64_ISA_xml_morello.json ISA_AArch32_xml_v8.json)
+jsons=(SysReg_xml_A_profile.json SysReg_xml_Morello.json ISA_A64_xml_A_profile.json A64_ISA_xml_morello.json ISA_AArch32_xml_A_profile.json)
 pwd=$(pwd)
 
 rm -rf docs
