@@ -3,8 +3,8 @@ ARM Assembly Reference Manual for https://kapeli.com/dash
 
 ARM Versions
 ----------
-- v8.9-A/v9.4-A (64-bit)
-- v8.9-A/v9.4-A (32-bit)
+- v8.10-A/v9.5-A (64-bit)
+- v8.10-A/v9.5-A (32-bit)
 - Morello (64-bit)
 
 Grab more from (https://developer.arm.com/architectures/cpu-architecture/a-profile/exploration-tools)
