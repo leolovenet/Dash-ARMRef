@@ -1,13 +1,13 @@
 # Dash-ARMRef
+
 ARM Assembly Reference Manual for https://kapeli.com/dash
 
-ARM Versions
-----------
-- v9.5-A and v8.9-A (64-bit)
-- v9.5-A and v8.9-A (32-bit)
-- Morello (64-bit)
+## ARM Versions
 
-Grab more from (https://developer.arm.com/architectures/cpu-architecture/a-profile/exploration-tools)
+- Up to v9.5-A and v8.9-A (64-bit and 32-bit)
+- Morello Platform (64-bit)
+
+Grab more from https://developer.arm.com/Architectures/A-Profile%20Architecture#Software-Download
 
 ## How to
 
