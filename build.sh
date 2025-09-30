@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 
+docver="2025-09"
+docvermorello="2022-01"
+
 if ! which dashing >/dev/null 2>&1
 then
     echo "missing command 'dashing', please install it (https://github.com/technosophos/dashing) first."
     exit 1
 fi
 
-jsons=(SysReg_xml_A_profile.json SysReg_xml_Morello.json ISA_A64_xml_A_profile.json A64_ISA_xml_morello.json ISA_AArch32_xml_A_profile.json)
+jsons=(SysReg_xml_A_profile.json SysReg_xml_A_profile_FAT.json SysReg_xml_MorelloA.json ISA_A64_xml_A_profile.json ISA_A64_xml_A_profile_FAT.json A64_ISA_xml_morelloA.json ISA_AArch32_xml_A_profile.json)
 pwd=$(pwd)
 
 rm -rf docs
@@ -14,14 +17,14 @@ mkdir -p docs
 for j in "${jsons[@]}"; do
     if [ ! -f "$j" ]
     then
-        echo "the JSON configuration file($j) of 'dashing build' command is missing, skip!"
+        echo "the JSON configuration file ($j) of 'dashing build' command is missing, skip!"
         continue
     fi
 
-    t=$(ls src/*.tar.gz | grep ${j%%.json} | sort -r | head -1)
+    t=$(ls src/*.tar.gz | grep "${j%%.json}-" | sort -r | head -1)
     if [ -z "$t" ]
     then
-        echo "then source file(src/${j%%.json}*) for 'dashing build' command is missing, skip!!"
+        echo "the source file (src/${j%%.json}-*) for 'dashing build' command is missing, skip!!"
         continue
     fi
 
@@ -30,7 +33,7 @@ for j in "${jsons[@]}"; do
     cd build || { echo "mkdir error!!!"; exit 2; }
 
     tar -zxf "../$t"
-    s=$(find . -type d -iname xhtml | sort -r | head -1)
+    s=$(find . -type d -iname xhtml | grep -v "diff-from" | grep -e "${docver}" -e "${docvermorello}" | sort -r | head -1)
     if [ -z "$s" ]
     then
         echo "can't find directory 'xhtml'!!!"
@@ -39,7 +42,7 @@ for j in "${jsons[@]}"; do
 
     cp "../icon@2x.png" "$s/"
     cp "../$j" "$s/dashing.json"
-    (cd "$s" && dashing build && mv *.docset "$pwd/docs")
+    (cd "$s" && dashing build && mv ./*.docset "$pwd/docs")
 
     cd ..
     rm -rf build
