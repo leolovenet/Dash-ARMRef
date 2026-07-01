@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-docver="2026-03"
+docver="2026-06"
 docvermorello="2022-01"
 
 if ! which dashing >/dev/null 2>&1
